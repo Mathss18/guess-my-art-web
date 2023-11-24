@@ -19,9 +19,13 @@ export default function Home() {
   const [percentage, setPercentage] = useState("0%");
   const [url, setUrl] = useState("/logo2.webp");
   const [endRound, setEndRound] = useState(false);
-  const [exclude, setExclude] = useState(JSON.parse(localStorage.getItem("exclude") ?? "[]"));
+  const [exclude, setExclude] = useState<any>([]);
   const [mode, setMode] = useState(ModeEnum.GUESS);
   const [imageLoading, setImageLoading] = useState(false);
+
+  useEffect(() => {
+    setExclude(JSON.parse(localStorage.getItem("exclude") ?? "[]"));
+  }, []);
 
   const { mutate: getRandom, isLoading } = useMutation(imageService.getRandom, {
     onSuccess: (data) => {
