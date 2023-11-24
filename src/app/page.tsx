@@ -112,7 +112,7 @@ export default function Home() {
           onLoad={() => {
             setImageLoading(false);
           }}
-          loader={({ src }) => src}
+          unoptimized
         />
         {endRound && (
           <div className="absolute top-0 left-0 w-full h-full rounded-lg flex items-center justify-center bg-black bg-opacity-50">
